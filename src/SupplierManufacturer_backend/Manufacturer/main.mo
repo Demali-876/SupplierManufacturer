@@ -31,7 +31,7 @@ actor Manufacturer{
     };
     public query func getInventory() : async [(Text, Text, Nat)] {
     let entriesArray = Iter.toArray<(Text, (Text, Nat))>(materialInventory.entries());
-    let inventoryArray : [(Text, Text, Nat)] = Array.map<(Text, (Text, Nat)), (Text, Text, Nat)>(
+    let inventoryArray = Array.map<(Text, (Text, Nat)), (Text, Text, Nat)>(
         entriesArray, 
         func (pair : (Text, (Text, Nat))) : (Text, Text, Nat) {
             let (key, (material, quantity)) = pair;
