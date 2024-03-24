@@ -1,7 +1,11 @@
 {
   "canisters": {
-    "SupplierManufacturer_backend": {
-      "main": "src/SupplierManufacturer_backend/main.mo",
+    "supplier": {
+      "main": "src/SupplierManufacturer_backend/Supplier/main.mo",
+      "type": "motoko"
+    },
+    "manufacturer": {
+      "main": "src/SupplierManufacturer_backend/manufacturer/main.mo",
       "type": "motoko"
     }
   },
