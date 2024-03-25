@@ -24,7 +24,6 @@ actor Supplier {
     };
 
     public func publishUpdate(update : MaterialUpdate) {
-        // Notify all followers interested in the updated material by materialId
         for (follower in List.toArray(followers).vals()) {
         if (follower.materialId == update.materialId) {
             follower.callback(update);
