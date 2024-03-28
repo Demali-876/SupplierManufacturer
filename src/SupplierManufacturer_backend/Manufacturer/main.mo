@@ -11,8 +11,7 @@ actor Manufacturer{
     quantity : Nat;
     };
     var materialInventory = HashMap.HashMap<Text, (Text, Nat)>(0, Text.equal, Text.hash);
-    public func init(materialId : Text, material : Text) {
-        // Follow updates for a specific material by materialId
+    public func init(materialId : Text) {
         Supplier.follow({
         materialId = materialId;
         callback = updateInventory;
@@ -32,7 +31,7 @@ actor Manufacturer{
     public query func getInventory() : async [(Text, Text, Nat)] {
     let entriesArray = Iter.toArray<(Text, (Text, Nat))>(materialInventory.entries());
     let inventoryArray = Array.map<(Text, (Text, Nat)), (Text, Text, Nat)>(
-        entriesArray, 
+        entriesArray,
         func (pair : (Text, (Text, Nat))) : (Text, Text, Nat) {
             let (key, (material, quantity)) = pair;
             return (key, material, quantity);
