@@ -42,6 +42,7 @@ actor Supplier {
     };
 
     public func publishUpdate(update : MaterialUpdate) {
+        materials.put(update.materialId,(update.material , update.quantity));
         for (follower in List.toArray(followers).vals()) {
         if (follower.materialId == update.materialId) {
             follower.callback(update);
